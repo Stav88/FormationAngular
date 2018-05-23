@@ -1,0 +1,9 @@
+<h2>Liste des éléments</h2>
+<ng-container *ngIf="collectionService.length > 0">
+  <ng-container *ngFor="let item of collectionService.collection; index as i">
+    <app-item [item]="item"></app-item>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="collectionService.length <= 0">
+  <p>Aucun élément</p>>
+</ng-container>

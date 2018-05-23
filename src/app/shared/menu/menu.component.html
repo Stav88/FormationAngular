@@ -1,0 +1,26 @@
+<!-- <p [style.backgroundColor]="bgColor">
+  Mon text : {{ text }}
+</p>
+<button type="button" (click)="onClick($event)">Clique-moi !</button> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/home">{{ title }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation"
+    [attr.aria-expanded]="!isCollapse"
+    (click)="isCollapse = !isCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapse">
+    <ul class="navbar-nav mr-auto" (click)="isCollapse = true">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/items/list">Liste</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/items/add">Ajouter</a>
+      </li>
+    </ul>
+  </div>
+</nav>
