@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-
-table {
-  border-collapse: collapse;
-  width: 100%;
+.state-alivrer,
+.state-encours,
+.state-livre {
+  text-transform: capitalize;
 }
 
-td, th {
-  border: solid 1px;
+.state-alivrer {
+  color: red;
+}
+.state-encours {
+  color: orange;
+}
+.state-livre {
+  color: green;
 }

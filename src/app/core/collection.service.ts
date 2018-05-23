@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Item } from './item';
+import { Observable, of } from 'rxjs';
+import { State } from '../items/state.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // défini le singleton
 })
 export class CollectionService {
-  private _collection: Item[];
+  private _collection$: Observable<Item[]>;
 
   constructor() {
-    this.collection = [
+    const collection: Item[] = [
       {
         id: 1,
         name: 'titre',
         reference: 123456,
-        state: ''
+        state: State.ALIVRER
       },
       {
         id: 2,
         name: 'titre 2',
         reference: 456,
-        state: ''
+        state: State.ENCOURS
       }
     ];
+    this._collection$ = of(collection);
   }
 
-  get collection(): Item[] {
-    return this._collection;
+  get collection$(): Observable<Item[]> {
+    return this._collection$;
   }
 
-  set collection(collection: Item[]) {
-    this._collection = collection;
-  }
-
-  get length(): number {
-    return this._collection.length;
-  }
+  // get length$(): Observable<number> {
+  //   return this._collection$.pipe(map((collection: Item[]) => collection.length));
+  // }
 }

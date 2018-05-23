@@ -1,9 +1,15 @@
 <div class="card" [attr.data-item-id]="item.id">
   <div class="card-header">
-    {{item.state}}
+    <span [appState]="item.state">{{item.state}}</span>
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ item.name }}</h5>
     <p class="card-text">{{ item.reference }}</p>
+
+    <ng-container [ngSwitch]="item.state">
+      <button *ngSwitchCase="State.ALIVRER" type="button" class="btn btn-primary" (click)="changeState(State.ENCOURS)">
+        {{ State.ENCOURS }}
+      </button>
+    </ng-container>
   </div>
 </div>
