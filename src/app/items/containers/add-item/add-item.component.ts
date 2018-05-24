@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { State } from '../../state.enum';
 
 @Component({
   selector: 'app-add-item',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
+  public State = State;
+  public name: string;
+  public reference: number;
+  public state: State;
 
   constructor() { }
 
   ngOnInit() {
+    this.state = State.ALIVRER;
+  }
+
+  public process(form) {
+    console.log(form.value);
   }
 
 }

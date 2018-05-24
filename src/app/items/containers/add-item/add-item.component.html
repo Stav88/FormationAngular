@@ -1,3 +1,35 @@
-<p>
-  add-item works!
-</p>
+<form class="form" (ngSubmit)="process(form)" #form="ngForm">
+
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Nom" name="name" [(ngModel)]="name" #nameRef="ngModel" required="required" />
+    <div class="alert alert-danger" role="alert" *ngIf="nameRef.invalid && form.touched">
+      Champs invalid
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Référence" name="ref" [(ngModel)]="reference" #referenceRef="ngModel" pattern="\d+" required="required" />
+    <div class="alert alert-danger" role="alert" *ngIf="referenceRef.invalid && form.touched">
+      Champs invalid
+    </div>
+  </div>
+
+  <div class="form-group">
+    <select class="form-control" name="state" [(ngModel)]="state" #stateRef="ngModel" required="required">
+      <option></option>
+      <!-- <ng-container *ngFor="State.">
+          <option>{{State.ALIVRER}}</option>
+      </ng-container> -->
+      <option [ngValue]="State.ALIVRER">{{State.ALIVRER}}</option>
+      <option [ngValue]="State.ENCOURS">{{State.ENCOURS}}</option>
+      <option [ngValue]="State.LIVREE">{{State.LIVREE}}</option>
+    </select>
+    <div class="alert alert-danger" role="alert" *ngIf="stateRef.invalid && form.touched">
+      Champs invalid
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Valider</button>
+  </div>
+</form>
