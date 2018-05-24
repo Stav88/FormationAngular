@@ -11,8 +11,15 @@ export class AddItemComponent implements OnInit {
   public name: string;
   public reference: number;
   public state: State;
+  public possibleStateValueList: string[] = [];
 
-  constructor() { }
+  constructor() {
+    for (const state in State) {
+      if (State.hasOwnProperty(state)) {
+        this.possibleStateValueList.push(State[state]);
+      }
+    }
+  }
 
   ngOnInit() {
     this.state = State.ALIVRER;

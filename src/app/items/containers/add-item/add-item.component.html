@@ -17,12 +17,9 @@
   <div class="form-group">
     <select class="form-control" name="state" [(ngModel)]="state" #stateRef="ngModel" required="required">
       <option></option>
-      <!-- <ng-container *ngFor="State.">
-          <option>{{State.ALIVRER}}</option>
-      </ng-container> -->
-      <option [ngValue]="State.ALIVRER">{{State.ALIVRER}}</option>
-      <option [ngValue]="State.ENCOURS">{{State.ENCOURS}}</option>
-      <option [ngValue]="State.LIVREE">{{State.LIVREE}}</option>
+      <ng-container *ngFor="let value of possibleStateValueList">
+          <option [ngValue]="value">{{value}}</option>
+      </ng-container>
     </select>
     <div class="alert alert-danger" role="alert" *ngIf="stateRef.invalid && form.touched">
       Champs invalid
