@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from './item';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { State } from '../items/state.enum';
 
 @Injectable({
@@ -31,7 +32,7 @@ export class CollectionService {
     return this._collection$;
   }
 
-  // get length$(): Observable<number> {
-  //   return this._collection$.pipe(map((collection: Item[]) => collection.length));
-  // }
+  get length$(): Observable<number> {
+    return this._collection$.pipe(map((collection: Item[]) => collection.length));
+  }
 }

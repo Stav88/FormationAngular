@@ -1,11 +1,11 @@
 <h2>Liste des éléments</h2>
-<!-- <p>
+<p>
   <ng-container [ngSwitch]="collectionService.length$ | async">
     <ng-container *ngSwitchCase="0">Aucun éléments trouvés</ng-container>
     <ng-container *ngSwitchCase="1">1 élément trouvé</ng-container>
-    <ng-container *ngSwitchDefault>{{collectionService.length$ | async}} élément trouvé</ng-container>
+    <ng-container *ngSwitchDefault>{{collectionService.length$ | async}} éléments trouvés</ng-container>
   </ng-container>
-</p> -->
+</p>
 <ng-container *ngFor="let item of collectionService.collection$ | async; index as i">
   <app-item [item]="item"></app-item>
 </ng-container>
