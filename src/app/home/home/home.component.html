@@ -1,17 +1,16 @@
 <p>
   home works!
 </p>
-
 <ng-container *ngFor="let post of jphService.posts$ | async">
   <div class="card" [attr.data-post-id]="post.id">
     <div class="card-header">
-      {{post.title}}}
+      {{post.title}}
     </div>
     <div class="card-body">
       <p class="card-text">{{ post.body }}</p>
     </div>
     <div class="card-body">
-      <!-- <p class="card-text" [userId]="post.userId"></p> -->
+      <a [appUserId]="post.userId"></a>
     </div>
   </div>
 

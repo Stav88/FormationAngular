@@ -27,4 +27,8 @@ export class JsonplaceholderService {
     }
     return this._users$;
   }
+
+  public getUser$(id: number): Observable<User> {
+    return this.http.get<User>(environment.jsonPlaceholderUrl + '/users/' + id);
+  }
 }
