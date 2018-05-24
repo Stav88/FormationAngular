@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CollectionService } from './collection.service';
+import { JsonplaceholderService } from './jsonplaceholder.service';
 
 @NgModule({
   imports: [
@@ -8,7 +9,8 @@ import { CollectionService } from './collection.service';
   ],
   declarations: [],
   providers: [
-    CollectionService
+    CollectionService,
+    JsonplaceholderService
   ]
 })
 export class CoreModule { }
