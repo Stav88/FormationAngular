@@ -1,27 +1,30 @@
-<form class="form" (ngSubmit)="process(form)" #form="ngForm">
+<form class="form container" (ngSubmit)="process(form)" [formGroup]="form">
 
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Nom" name="name" [(ngModel)]="name" #nameRef="ngModel" required="required" />
-    <div class="alert alert-danger" role="alert" *ngIf="nameRef.invalid && form.touched">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Nom" name="name" formControlName="name" />
+      <div class="input-group-append">
+        <div class="input-group-text">{{nameLength}} car.</div>
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="isError('name')">
       Champs invalid
     </div>
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Référence" name="ref" [(ngModel)]="reference" #referenceRef="ngModel" pattern="\d+" required="required" />
-    <div class="alert alert-danger" role="alert" *ngIf="referenceRef.invalid && form.touched">
+    <input type="text" class="form-control" placeholder="Référence" name="reference" formControlName="reference" />
+    <div class="alert alert-danger" role="alert" *ngIf="isError('reference')">
       Champs invalid
     </div>
   </div>
 
   <div class="form-group">
-    <select class="form-control" name="state" [(ngModel)]="state" #stateRef="ngModel" required="required">
+    <select class="form-control" name="state" formControlName="state">
       <option></option>
-      <ng-container *ngFor="let value of possibleStateValueList">
-          <option [ngValue]="value">{{value}}</option>
-      </ng-container>
+        <option *ngFor="let value of possibleStateValueList" [ngValue]="value">{{value}}</option>
     </select>
-    <div class="alert alert-danger" role="alert" *ngIf="stateRef.invalid && form.touched">
+    <div class="alert alert-danger" role="alert" *ngIf="isError('state')">
       Champs invalid
     </div>
   </div>
