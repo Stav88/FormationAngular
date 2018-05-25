@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../../core/item';
 import { State } from '../../state.enum';
 
@@ -10,6 +10,8 @@ import { State } from '../../state.enum';
 export class ItemComponent implements OnInit {
   private _item: Item;
   State = State;
+  @Output('onchange') onchange: EventEmitter<Item> = new EventEmitter();
+  @Output('ondelete') ondelete: EventEmitter<Item> = new EventEmitter();
 
   constructor() { }
 
@@ -26,5 +28,10 @@ export class ItemComponent implements OnInit {
 
   public changeState(state: State): void {
     this._item.state = state;
+    this.onchange.emit(this._item);
+  }
+
+  public delete(): void {
+    this.ondelete.emit(this._item);
   }
 }

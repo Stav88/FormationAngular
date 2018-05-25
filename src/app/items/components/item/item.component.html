@@ -1,6 +1,7 @@
 <div class="card" [attr.data-item-id]="item.id">
   <div class="card-header">
     <span [appState]="item.state">{{item.state}}</span>
+    <button type="button" aria-label="Delete" class="close" (click)="delete()"><span aria-hidden="true">&times;</span></button>
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ item.name }}</h5>

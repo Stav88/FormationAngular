@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {State} from '../../state.enum';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { CollectionService } from '../../../core/collection.service';
+import { State } from '../../state.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -13,7 +15,9 @@ export class AddItemComponent implements OnInit {
   public possibleStateValueList: string[] = Object.values(State);
   public nameLength = 0;
 
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder,
+    private collectionService: CollectionService,
+    private router: Router) {
   }
 
   public ngOnInit() {
@@ -21,7 +25,7 @@ export class AddItemComponent implements OnInit {
     this.form.get('name').valueChanges.pipe(
       debounceTime(100),
       distinctUntilChanged()
-    ).subscribe((value) => this.nameLength = value.length);
+    ).subscribe((value) => this.nameLength = value ? value.length : 0);
     this.form.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged()
@@ -38,7 +42,10 @@ export class AddItemComponent implements OnInit {
 
   public process() {
     // persister les données avec un appel http/Web Service
+    this.collectionService.insert(this.form.value);
     this.form.reset();
+    this.router.navigate(['/items/list']);
+
   }
 
   public isError(fieldName: string) {

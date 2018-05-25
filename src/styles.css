@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 .state-alivrer,
 .state-encours,
-.state-livre {
+.state-livree {
   text-transform: capitalize;
 }
 
@@ -11,6 +11,6 @@
 .state-encours {
   color: orange;
 }
-.state-livre {
+.state-livree {
   color: green;
 }

@@ -7,6 +7,7 @@ import { CollectionService } from '../../../core/collection.service';
   styleUrls: ['./list-items.component.css']
 })
 export class ListItemsComponent implements OnInit {
+  console = console;
 
   constructor(public collectionService: CollectionService) { }
 

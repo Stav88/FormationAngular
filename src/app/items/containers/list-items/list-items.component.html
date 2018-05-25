@@ -7,5 +7,5 @@
   </ng-container>
 </p>
 <ng-container *ngFor="let item of collectionService.collection$ | async; index as i">
-  <app-item [item]="item"></app-item>
+  <app-item [item]="item" (onchange)="collectionService.update($event)" (ondelete)="collectionService.delete($event)"></app-item>
 </ng-container>
