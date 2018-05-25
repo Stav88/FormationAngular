@@ -1,11 +1,13 @@
-<h2>Liste des éléments</h2>
-<p>
-  <ng-container [ngSwitch]="collectionService.length$ | async">
-    <ng-container *ngSwitchCase="0">Aucun éléments trouvés</ng-container>
-    <ng-container *ngSwitchCase="1">1 élément trouvé</ng-container>
-    <ng-container *ngSwitchDefault>{{collectionService.length$ | async}} éléments trouvés</ng-container>
+<div class="container">
+  <h2>Liste des éléments</h2>
+  <p>
+    <ng-container [ngSwitch]="collectionService.length$ | async">
+      <ng-container *ngSwitchCase="0">Aucun éléments trouvés</ng-container>
+      <ng-container *ngSwitchCase="1">1 élément trouvé</ng-container>
+      <ng-container *ngSwitchDefault>{{collectionService.length$ | async}} éléments trouvés</ng-container>
+    </ng-container>
+  </p>
+  <ng-container *ngFor="let item of collectionService.collection$ | async; index as i">
+    <app-item [item]="item" (onchange)="collectionService.update($event)" (ondelete)="collectionService.delete($event)"></app-item>
   </ng-container>
-</p>
-<ng-container *ngFor="let item of collectionService.collection$ | async; index as i">
-  <app-item [item]="item" (onchange)="collectionService.update($event)" (ondelete)="collectionService.delete($event)"></app-item>
-</ng-container>
+</div>
