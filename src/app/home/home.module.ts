@@ -7,7 +7,8 @@ import { PaginatorModule } from 'ngx-paginator';
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    PaginatorModule
   ],
   declarations: [HomeComponent]
 })

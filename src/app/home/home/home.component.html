@@ -1,7 +1,11 @@
 <p>
   home works!
 </p>
-<ng-container *ngFor="let post of jphService.posts$ | async">
+<route-paginator
+    (onChange)="setPage($event)"
+    [onPage]="nbByPage"
+    [total]="100"></route-paginator>
+<ng-container *ngFor="let post of posts$ | async">
   <div class="card" [attr.data-post-id]="post.id">
     <div class="card-header">
       {{post.title}}
@@ -15,3 +19,7 @@
   </div>
 
 </ng-container>
+<route-paginator
+    (onChange)="setPage($event)"
+    [onPage]="nbByPage"
+    [total]="100"></route-paginator>
